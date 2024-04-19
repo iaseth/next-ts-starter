@@ -2,32 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+html {
+	--s: 150px;
+	--c1: #f7d2a1;
+	--c2: #05057e;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+	--_g: 
+	var(--c1) 0%  5% ,var(--c2) 6%  15%,var(--c1) 16% 25%,var(--c2) 26% 35%,var(--c1) 36% 45%,
+	var(--c2) 46% 55%,var(--c1) 56% 65%,var(--c2) 66% 75%,var(--c1) 76% 85%,var(--c2) 86% 95%,
+	#0000 96%;
+	background: radial-gradient(50% 50% at 100% 0,var(--_g)),
+		radial-gradient(50% 50% at 0 100%,var(--_g)), radial-gradient(50% 50%,var(--_g)),
+		radial-gradient(50% 50%,var(--_g)) calc(var(--s)/2) calc(var(--s)/2) var(--c1);
+	background-size: var(--s) var(--s);
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	@apply text-zinc-950;
+	font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+body.dark-theme {
+	@apply text-zinc-100;
+}
+
+
+h1, h2, h3, h4, h5, h6 { @apply font-bold; }
+.h1, .h2, .h3, .h4, .h5, .h6 { @apply font-bold; }
+
+h1, .h1, .p1 { @apply text-2xl; }
+h2, .h2, .p2 { @apply text-xl; }
+h3, .h3, .p3 { @apply text-lg; }
+h4, .h4, .p4 { @apply text-base; }
+h5, .h5, .p5 { @apply text-sm; }
+h6, .h6, .p6 { @apply text-xs; }
+
+.H0, .H1, .H2, .H3, .H4, .H5, .H6 { @apply font-bold; }
+.H0, .P0 { @apply text-9xl; }
+.H1, .P1 { @apply text-8xl; }
+.H2, .P2 { @apply text-7xl; }
+.H3, .P3 { @apply text-6xl; }
+.H4, .P4 { @apply text-5xl; }
+.H5, .P5 { @apply text-4xl; }
+.H6, .P6 { @apply text-3xl; }
+
+p + p { @apply mt-4 }
+a.link {
+	@apply duration-300 hover:text-blue-500;
 }
